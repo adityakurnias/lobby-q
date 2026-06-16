@@ -134,6 +134,15 @@ export const useQueueStore = defineStore('queue', {
       }) as { success: boolean }
 
       if (res.success) {
+        // Optimistic UI Update: Langsung pindahkan semua antrean aktif ke Parked
+        const updatedPlaying = this.playing.map(q => ({ ...q, status: 'PARKED' as const }))
+        const updatedWaiting = this.waiting.map(q => ({ ...q, status: 'PARKED' as const }))
+        
+        this.parked = [...this.parked, ...updatedPlaying, ...updatedWaiting]
+        this.playing = []
+        this.waiting = []
+
+        // Tetap panggil fetchQueues untuk mensinkronkan data final dari backend
         await this.fetchQueues()
       }
       return res

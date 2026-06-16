@@ -1,183 +1,160 @@
-# LobbyQ Design System & UX Specification v1.0
+# LobbyQ Visual Design System & Style Specification
 
-## Product Overview
+This manual defines the visual identity, typography, layout system, color language, and interaction style used across the **LobbyQ** platform.
 
-**Product Name:** LobbyQ
+The queue management workflow, OBS-first philosophy, and queue logic remain unchanged.
 
-**Category:** SaaS
-
-**Purpose:**
-Sistem manajemen antrean mabar untuk streamer game online yang menggantikan pencatatan manual menggunakan Notepad.
-
-**Primary Users:**
-
-* Streamer game online
-* Usia 15–30 tahun
-* Menggunakan desktop dan mobile
-* Familiar dengan tools sederhana
-* Membutuhkan pengelolaan antrean setiap hari
+Only the visual and UI design language is replaced.
 
 ---
 
-# Design Principles
+# 1. Design Philosophy
 
-## Core UX Goals
+LobbyQ adopts an editorial retro-tech aesthetic inspired by Sync Tree.
 
-### Fast
+The interface should feel:
 
-User harus dapat melihat dan mengelola antrean tanpa berpikir.
-
-### Fun
-
-Nuansa gaming modern tanpa terlihat seperti dashboard enterprise.
-
-### Focused
-
-Tidak ada fitur yang mengalihkan perhatian dari tujuan utama: mengelola antrean.
-
-### OBS First
-
-Dashboard streamer dirancang khusus untuk OBS Dock dengan lebar hanya 300–400px.
-
----
-
-# Brand Identity
-
-## Personality
-
-* Gaming
-* Friendly
+* Structured
+* Clean
+* Technical
+* Gaming-oriented
 * Lightweight
-* Minimalist
+* Highly scannable
 
-## Color Palette
-
-### Primary
-
-#13A8C7
-
-### Secondary
-
-#1B4A5E
-
-### Surface Accent
-
-#D2F6FB
-
-## Theme
-
-Dark Mode Only
-
-Tidak tersedia Light Mode pada v1.0.
-
-Alasan:
-
-* Lebih nyaman untuk streamer
-* Selaras dengan estetika gaming
-* Mengurangi kompleksitas desain
+Unlike traditional SaaS dashboards, LobbyQ avoids enterprise complexity and instead embraces a modern retro-control-panel aesthetic.
 
 ---
 
-# Typography
+# 2. Typography System
 
-## Primary Font
+## Font Families
+
+### Primary Display Font
+
+Outfit
+
+Used for:
+
+* Streamer names
+* Queue page titles
+* Statistics values
+* Major headings
+* Landing page hero
+
+Characteristics:
+
+* Geometric
+* Bold
+* Strong visual hierarchy
+
+---
+
+### Metadata Font
+
+Space Mono
+
+Used for:
+
+* Queue positions
+* Match counters
+* Status badges
+* Labels
+* Queue IDs
+* Dates and timestamps
+
+Characteristics:
+
+* Retro terminal aesthetic
+* High scanability
+* Gaming control-panel feel
+
+---
+
+### Body Font
 
 Inter
 
-## Alternative
+Used for:
 
-Geist
+* Descriptions
+* Bios
+* Tooltips
+* Instructions
+* General UI copy
 
-## Typography Rules
+Characteristics:
 
-* Angka harus mudah dibaca
-* Prioritaskan readability dibanding style
-* Gunakan font-weight 600 untuk angka statistik
-
----
-
-# Visual Direction
-
-## Inspiration
-
-Dell Dashboard Style
-
-Karakteristik:
-
-* Profesional
-* Bersih
-* Tidak berlebihan
-* Fokus ke data
-
-## Component Style
-
-### Border Radius
-
-Rounded
-
-8px–12px
-
-### Shadows
-
-Soft Shadow
-
-Tidak menggunakan heavy shadow.
-
-### Animation Level
-
-3/10
-
-Animasi hanya untuk:
-
-* Accordion transition
-* List movement
-* Toast appearance
-
-Tidak ada animasi dekoratif.
+* Neutral
+* Readable
+* Compact
 
 ---
 
-# Information Architecture
+# 3. Color System
 
-## Public Pages
+## Core Palette
 
-### Landing Page
+```css
+:root {
+  --color-ink: #111111;
+  --color-canvas: #ffffff;
 
-1. Hero
-2. Visual Demo
-3. Cara Kerja
-4. CTA
+  --color-accent-primary: #ef233c;
+  --color-accent-secondary: #3a86c8;
 
-### Queue Page
-
-/q/{username}
-
-Halaman publik untuk viewer.
-
-### Authentication
-
-Login
-Register
+  --color-border: #111111;
+}
+```
 
 ---
 
-# OBS Dashboard Layout
+## Dark Theme Adaptation
 
-## Width Constraint
+LobbyQ remains Dark Mode Only.
 
+```css
+:root {
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #171717;
+
+  --text-primary: #ffffff;
+  --text-secondary: #bdbdbd;
+
+  --accent-primary: #ef233c;
+  --accent-secondary: #3a86c8;
+}
+```
+
+---
+
+# 4. Layout Philosophy
+
+## OBS Dashboard
+
+Dashboard remains optimized for OBS Dock.
+
+Width target:
+
+```text
 300px – 400px
+```
 
-Hard Requirement:
+Requirements:
 
-Tidak boleh ada horizontal scroll.
+* No horizontal scrolling
+* One-column layout
+* Primary actions visible immediately
 
-## Layout Structure
+---
 
-Top Input Section
+## Vertical Flow
+
+```text
+Quick Add Queue
 
 ↓
 
-Queue Statistics
+Statistics
 
 ↓
 
@@ -190,211 +167,298 @@ WAITING
 ↓
 
 PARKED
+```
 
 ---
 
-# Dashboard Metrics
+# 5. Visual Style
 
-Tampilkan:
+## Borders
 
-* Total WAITING
-* Total PLAYING
-* Total PARKED
+All components use visible borders.
 
-Tidak menampilkan:
+```css
+border: 1.5px solid #111111;
+```
 
-* Average Wait Time
-* Peak Queue Time
-* Total Match Hari Ini
+Characteristics:
 
----
+* Sharp
+* Editorial
+* Print-inspired
 
-# Queue Management
+No glassmorphism.
 
-## Supported Actions
-
-### Add Queue
-
-Inline Input
-
-### Edit Queue
-
-Double-click row
-
-### Pause User
-
-Inline Action
-
-### Wake User
-
-Inline Action
-
-### Bulk End Match
-
-Master Action
-
-### End Session
-
-Semua WAITING menjadi PARKED
-
-## Rejected Features
-
-### Drag and Drop
-
-Rejected
-
-Alasan:
-
-* Sulit pada layar OBS sempit
-* Berpotensi menyebabkan kesalahan interaksi
+No neumorphism.
 
 ---
 
-# Queue Row Design
+## Border Radius
 
-## Visible Information
+```css
+border-radius: 10px;
+```
 
-Posisi
+Range:
 
-Contoh:
+```text
+8px – 12px
+```
 
+---
+
+## Shadows
+
+Minimal.
+
+```css
+box-shadow:
+0 2px 8px rgba(0,0,0,.08);
+```
+
+Purpose:
+
+* Separation only
+* Not decorative
+
+---
+
+# 6. Queue Card Design
+
+Every queue item behaves as a compact editorial card.
+
+Structure:
+
+```text
 #1
-
-Nama Viewer
-
-Contoh:
 
 Budi
 
-Masked Game ID
-
-Contoh:
-
 1234***
-
-Sisa Match
-
-Contoh:
 
 Sisa 2 Match
 
-Priority Badge
-
 ⭐ Fast Track
+```
+
+Visual hierarchy:
+
+1. Position
+2. Username
+3. Match information
+4. Priority indicator
 
 ---
 
-# Public Queue Page
+## Queue Position
 
-## Header
+Uses Space Mono.
 
-Avatar Streamer
+Large.
 
-Nama Streamer
+```css
+font-family: 'Space Mono';
+font-weight: 700;
+```
 
-Status Badge
+Example:
 
-🔴 LIVE QUEUE
-
-## Sections
-
-### PLAYING
-
-Paling atas
-
-Visual highlight lebih kuat
-
-### WAITING
-
-List utama
-
-### PARKED
-
-Collapsed by default
+```text
+#01
+```
 
 ---
 
-# Viewer Interaction
+## Viewer Name
 
-Viewer hanya dapat:
+Uses Outfit.
 
-* Melihat antrean
-* Refresh data otomatis
+Example:
 
-Viewer tidak dapat:
-
-* Join queue
-* Edit queue
-* Login
-* Mengubah data
-
-Public page bersifat read-only.
+```text
+Budi
+```
 
 ---
 
-# Empty States
+## Metadata
 
-## OBS Dashboard
+Uses Space Mono.
 
-Belum ada antrean.
+Example:
 
-Ketik nama viewer di atas untuk memulai.
-
-## Public Queue
-
-Lobi sedang kosong.
-
-Streamer sedang istirahat atau belum membuka pendaftaran mabar.
-
-Tambahkan ilustrasi controller yang sedang di-charge.
+```text
+1234***
+Sisa 2 Match
+```
 
 ---
 
-# Notifications
+# 7. Statistics Cards
 
-## OBS Dashboard
+Compact control-panel style.
 
-Toast Success
+Example:
 
-Toast Error
+```text
+WAITING
 
-Toast Warning
+12
+```
 
-## Public Queue
+```text
+PLAYING
 
-Tidak ada browser notification.
+4
+```
 
-Gunakan:
+```text
+PARKED
 
-* Flash highlight
-* Smooth row transition
-
-Saat posisi antrean berubah.
-
----
-
-# Mobile Experience
-
-## Queue Page
-
-Single Page Layout
-
-Sticky Header
-
-Berisi:
-
-* Avatar
-* Nama streamer
-* Tombol share
-
-Tidak menggunakan:
-
-* Bottom Navigation
-* Hamburger Menu
+18
+```
 
 ---
 
-# Component Library
+Style:
+
+* Border-based
+* Large number
+* Small label
+
+No charts.
+
+No graphs.
+
+No trend indicators.
+
+---
+
+# 8. Landing Page Style
+
+Inspired by Sync Tree editorial layout.
+
+Sections:
+
+1. Hero
+2. Product Preview
+3. Cara Kerja
+4. CTA
+
+---
+
+## Hero Layout
+
+Large Outfit headline.
+
+Example:
+
+```text
+MANAGE YOUR MABAR QUEUE
+WITHOUT NOTEPAD.
+```
+
+Supporting copy uses Inter.
+
+---
+
+# 9. Retro-Tech Decorative Elements
+
+Decorative only.
+
+Never interfere with usability.
+
+---
+
+## Scanline Effects
+
+Allowed on:
+
+* Hero preview
+* Landing page illustrations
+* Streamer avatar cards
+
+Not allowed on:
+
+* Queue text
+* Statistics
+* Action buttons
+
+Readability must remain perfect.
+
+---
+
+## CRT Filters
+
+May be used for:
+
+* Streamer profile image
+* Marketing screenshots
+
+Not used inside queue management views.
+
+---
+
+# 10. Buttons
+
+## Primary
+
+Filled Accent Red
+
+```css
+background: #ef233c;
+color: white;
+```
+
+---
+
+## Secondary
+
+Outlined
+
+```css
+border: 1.5px solid #111111;
+background: transparent;
+```
+
+---
+
+## Hover
+
+```css
+transform: translateY(-2px);
+transition: 300ms;
+```
+
+---
+
+# 11. Animation Rules
+
+Animation Level:
+
+```text
+3 / 10
+```
+
+Allowed:
+
+* Toast appearance
+* Queue movement
+* Accordion expand
+* Status change
+
+---
+
+Not Allowed:
+
+* Floating elements
+* Parallax
+* Decorative particles
+* Heavy page transitions
+
+---
+
+# 12. Component Styling
 
 Required Components:
 
@@ -407,59 +471,54 @@ Required Components:
 * Queue Card
 * Stats Card
 
-Rejected Components:
+Visual Characteristics:
 
-* Modal
-* Command Palette
-* Data Table
-* Popup Wizard
+* Visible borders
+* Monospace metadata
+* Editorial spacing
+* Compact layouts
 
 ---
 
-# UX Rules
+# 13. Empty States
 
-## Rule 1
+## OBS Dashboard
 
-OBS First.
+```text
+Belum ada antrean.
 
-Semua komponen dashboard harus bekerja sempurna pada lebar 300px.
+Ketik nama viewer di atas untuk memulai.
+```
 
-## Rule 2
+---
 
-No Horizontal Scroll.
+## Public Queue
 
-## Rule 3
+```text
+Lobi sedang kosong.
 
-Zero Modal Policy.
+Streamer sedang istirahat atau belum membuka pendaftaran mabar.
+```
 
-Semua aksi dilakukan inline.
+Illustration style:
 
-## Rule 4
+* Monochrome
+* Retro-tech
+* CRT-inspired
 
-Read Only Public Page.
+---
 
-Viewer tidak boleh mengubah data.
+# 14. UX Constraints
 
-## Rule 5
+The following LobbyQ product rules remain unchanged:
 
-Instant Feedback.
+* OBS First
+* No Horizontal Scroll
+* Zero Modal Policy
+* Read Only Public Queue
+* Instant Feedback
+* Queue Position Always Visible
+* One Screen Priority
+* Minimal Cognitive Load
 
-Semua tombol aksi harus memiliki loading state.
-
-## Rule 6
-
-Queue Position Must Be Visible.
-
-Posisi antrean harus langsung terlihat tanpa membuka detail.
-
-## Rule 7
-
-One Screen Priority.
-
-Aksi utama harus terlihat tanpa scroll berlebihan pada OBS Dock.
-
-## Rule 8
-
-Minimal Cognitive Load.
-
-Hanya tampilkan informasi yang dibutuhkan untuk mengelola antrean.
+Visual changes must never compromise these principles.

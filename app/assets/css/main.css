@@ -3,54 +3,179 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-ink: #111111;
+    --color-canvas: #ffffff;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f9f9f9;
+    --color-bg-tertiary: #f4f4f4;
+    --color-text-primary: #111111;
+    --color-text-secondary: #444444;
+    --color-text-tertiary: #777777;
+    --color-border-primary: #111111;
+    --color-border-secondary: #222222;
+    --color-accent: #ef233c;
+    --color-accent-secondary: #3a86c8;
+    --color-surface-accent: #ef233c;
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    --radius-xl: 12px;
+    --shadow-soft: 0 2px 8px rgba(0,0,0,.08);
+    --shadow-soft-md: 0 4px 12px rgba(0,0,0,.12);
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 400ms;
+    --easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+    --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  }
+
   html {
-    @apply bg-surface-deeper text-white font-sans;
+    font-size: 15px; /* Mobile */
+    @apply bg-surface text-[var(--color-text-primary)] font-sans antialiased overflow-x-hidden;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 14px; /* Desktop calibrated for scroll-free viewports */
+    }
   }
 
   body {
-    @apply min-h-screen antialiased;
+    @apply min-h-screen bg-surface-deeper text-[var(--color-text-primary)] selection:bg-primary/25 selection:text-white;
   }
 
-  ::selection {
-    @apply bg-primary/30 text-white;
+  /* Thin retro-editorial scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-retro rounded-md hover:bg-primary transition-colors;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary hover:bg-primary-light text-white font-semibold px-6 py-3 rounded-lg
-           transition-all duration-200 ease-out
+    @apply bg-primary hover:bg-primary-light text-white font-display font-bold px-5 py-2.5 rounded-[10px]
+           border-[1.5px] border-retro shadow-[3px_3px_0px_#111111]
+           focus:outline-none focus:ring-2 focus:ring-primary/45 focus:ring-offset-2 focus:ring-offset-surface
+           transition-all duration-200 transform
            disabled:opacity-50 disabled:cursor-not-allowed
-           focus:outline-none focus:ring-2 focus:ring-primary/50;
+           hover:-translate-y-0.5 active:translate-y-0.5 hover:shadow-[4px_4px_0px_#111111] active:shadow-[1px_1px_0px_#111111];
   }
 
   .btn-secondary {
-    @apply bg-secondary hover:bg-secondary-light text-white font-medium px-6 py-3 rounded-lg
-           transition-all duration-200 ease-out
+    @apply bg-white hover:bg-surface-dark border-[1.5px] border-retro text-retro font-mono font-bold px-5 py-2.5 rounded-[10px]
+           shadow-[3px_3px_0px_#111111]
+           transition-all duration-200 transform
            disabled:opacity-50 disabled:cursor-not-allowed
-           focus:outline-none focus:ring-2 focus:ring-secondary/50;
+           focus:outline-none focus:ring-2 focus:ring-retro/10 focus:ring-offset-2 focus:ring-offset-surface
+           hover:-translate-y-0.5 active:translate-y-0.5 hover:shadow-[4px_4px_0px_#111111] active:shadow-[1px_1px_0px_#111111];
   }
 
   .btn-ghost {
-    @apply bg-transparent hover:bg-white/5 text-gray-300 hover:text-white font-medium px-6 py-3 rounded-lg
-           transition-all duration-200 ease-out
-           border border-white/10 hover:border-white/20;
+    @apply bg-transparent hover:bg-surface-dark text-[var(--color-text-secondary)] hover:text-retro font-mono font-medium px-4 py-2 rounded-[10px]
+           transition-all duration-300 transform
+           border border-transparent hover:border-retro;
   }
 
   .card {
-    @apply bg-surface-dark rounded-lg border border-white/5 shadow-soft;
+    @apply bg-surface border-[1.5px] border-retro rounded-[10px] shadow-soft;
+  }
+
+  .card-interactive {
+    @apply card hover:border-retro hover:shadow-soft-md
+           transition-all duration-300 transform;
   }
 
   .input-field {
-    @apply w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3
-           text-white placeholder-gray-500
-           focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30
-           transition-colors duration-200;
+    @apply w-full bg-surface border-[1.5px] border-retro rounded-[10px] px-4 py-3
+           text-sm text-retro placeholder-[var(--color-text-tertiary)] font-mono
+           focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20
+           transition-all duration-150;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-primary-light to-secondary bg-clip-text text-transparent;
+  }
+
+  /* List transition styles */
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .list-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .list-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  .list-move {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Scanline Overlay */
+  .scanlines {
+    position: relative;
+  }
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      rgba(17, 17, 17, 0) 50%, 
+      rgba(17, 17, 17, 0.05) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 15;
+  }
+
+  /* CRT Screen Filter */
+  .crt-screen {
+    position: relative;
+  }
+  /* Raster lines & color shifts */
+  .crt-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(rgba(17, 17, 17, 0) 50%, rgba(17, 17, 17, 0.12) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+    background-size: 100% 3px, 6px 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  /* Vignette Shadow */
+  .crt-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 65%, rgba(0, 0, 0, 0.35) 150%);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* Duotone Blend Multiply */
+  .crt-image {
+    filter: grayscale(100%) contrast(140%) brightness(100%);
+    mix-blend-mode: multiply;
   }
 }

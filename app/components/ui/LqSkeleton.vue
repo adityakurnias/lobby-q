@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'animate-pulse bg-white/5 rounded',
+      'animate-pulse rounded-[8px] bg-retro/[0.08] border border-retro/10',
       heightClass,
       widthClass,
     ]"

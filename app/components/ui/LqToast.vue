@@ -1,11 +1,11 @@
 <template>
   <Teleport to="body">
-    <div class="fixed top-4 right-4 z-[9999] flex flex-col gap-2 max-w-sm">
+    <div class="fixed top-4 right-4 z-[9999] flex flex-col gap-2.5 max-w-sm w-full px-4 sm:px-0 font-mono">
       <TransitionGroup
-        enter-active-class="transition-all duration-200 ease-out"
+        enter-active-class="transition-all duration-300 ease-out"
         enter-from-class="translate-x-full opacity-0"
         enter-to-class="translate-x-0 opacity-100"
-        leave-active-class="transition-all duration-150 ease-in"
+        leave-active-class="transition-all duration-200 ease-in"
         leave-from-class="translate-x-0 opacity-100"
         leave-to-class="translate-x-full opacity-0"
       >
@@ -13,27 +13,28 @@
           v-for="toast in toasts"
           :key="toast.id"
           :class="[
-            'flex items-center gap-3 px-4 py-3 rounded-lg border shadow-soft-lg',
+            'flex items-center gap-3 px-4 py-3.5 rounded-[10px] border-[1.5px] border-retro shadow-soft transition-all',
             variantClasses(toast.type),
           ]"
         >
-          <!-- Icon -->
-          <svg v-if="toast.type === 'success'" class="w-5 h-5 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-          </svg>
-          <svg v-else-if="toast.type === 'error'" class="w-5 h-5 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-          <svg v-else class="w-5 h-5 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-          </svg>
-          <span class="text-sm text-white flex-1">{{ toast.message }}</span>
+          <div class="shrink-0">
+            <svg v-if="toast.type === 'success'" class="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+            <svg v-else-if="toast.type === 'error'" class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <svg v-else class="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+          </div>
+          <span class="text-xs font-mono font-bold text-retro flex-1 leading-relaxed">{{ toast.message }}</span>
           <button
-            class="text-gray-400 hover:text-white transition-colors shrink-0"
+            class="text-[var(--color-text-tertiary)] hover:text-retro transition-colors shrink-0 p-1 rounded-md hover:bg-surface-dark cursor-pointer"
             @click="removeToast(toast.id)"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
@@ -43,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, provide } from 'vue'
+
 interface Toast {
   id: number
   type: 'success' | 'error' | 'warning'
@@ -54,9 +57,9 @@ let nextId = 0
 
 const variantClasses = (type: Toast['type']) => {
   const variants = {
-    success: 'bg-green-900/80 border-green-700/50 backdrop-blur-sm',
-    error: 'bg-red-900/80 border-red-700/50 backdrop-blur-sm',
-    warning: 'bg-amber-900/80 border-amber-700/50 backdrop-blur-sm',
+    success: 'bg-white border-l-[4px] border-l-secondary',
+    error: 'bg-white border-l-[4px] border-l-primary',
+    warning: 'bg-white border-l-[4px] border-l-amber-600',
   }
   return variants[type]
 }
@@ -73,9 +76,7 @@ const removeToast = (id: number) => {
   toasts.value = toasts.value.filter((t) => t.id !== id)
 }
 
-// Expose for use in pages
 defineExpose({ addToast })
 
-// Also provide via composable pattern
 provide('toast', { addToast })
 </script>

@@ -22,6 +22,8 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Inter: [300, 400, 500, 600, 700, 800],
+      Outfit: [400, 500, 600, 700, 900],
+      'Space Mono': [400, 700],
     },
     display: 'swap',
     prefetch: true,
@@ -35,7 +37,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { class: 'dark' },
+      htmlAttrs: { class: 'light' },
       title: 'LobbyQ',
       meta: [
         { name: 'description', content: 'Sistem manajemen antrean mabar untuk streamer game online' },

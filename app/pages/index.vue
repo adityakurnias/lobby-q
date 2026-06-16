@@ -1,366 +1,196 @@
 <template>
-  <div class="relative min-h-screen bg-surface-deeper overflow-hidden">
-    <!-- Background Glow Effects -->
-    <div class="absolute inset-0 pointer-events-none z-0">
-      <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
-      <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-secondary/15 rounded-full blur-[130px]" />
-    </div>
-
+  <div class="relative min-h-screen bg-surface-deeper overflow-hidden pb-16 text-retro">
     <!-- Hero Section -->
-    <section class="relative z-10 max-w-6xl mx-auto px-6 pt-20 pb-16 text-center">
-      <!-- Badge Announcement -->
-      <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4.5 py-1.5 mb-8 hover:bg-primary/15 transition-all">
-        <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
-        <span class="text-xs text-primary font-semibold tracking-wide uppercase">LobbyQ v1.0 &middot; OBS Streamer Ready</span>
+    <section class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-16 flex flex-col items-center text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-surface border-[1.5px] border-retro rounded-full mb-6 shadow-[2px_2px_0px_#111111]">
+        <span class="w-2.5 h-2.5 rounded-full bg-secondary border border-retro"></span>
+        <span class="font-mono text-[10px] font-bold tracking-wider uppercase text-retro">Online Queue w/ LobbyQ</span>
       </div>
-
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-        Kelola Antrean Mabar<br />
-        <span class="text-gradient">Lebih Cepat Dari Notepad</span>
+      
+      <h1 class="font-display text-5xl md:text-7xl font-extrabold text-retro tracking-tight leading-none max-w-4xl mb-6 uppercase">
+        MANAGE YOUR MABAR QUEUE <br>
+        <span class="text-primary underline decoration-4 decoration-secondary underline-offset-8">WITHOUT NOTEPAD.</span>
       </h1>
-
-      <!-- Sub-headline -->
-      <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Gantikan pencatatan antrean manual kamu yang berantakan.
-        Gunakan dashboard khusus yang pas di <span class="text-white font-medium">OBS Custom Dock</span> dan biarkan viewer memantau posisi mereka secara real-time.
+      
+      <p class="font-sans text-retro/75 text-sm md:text-base max-w-xl mb-10 leading-relaxed">
+        LobbyQ adalah sistem antrean mabar terintegrasi untuk para streamer. Didesain secara khusus untuk disematkan langsung di OBS Dock dengan visual retro-tech editorial yang bersih dan performa tinggi.
       </p>
 
-      <!-- Call To Actions -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <NuxtLink to="/register" class="btn-primary text-sm px-8 py-3.5 flex items-center gap-2 shadow-glow hover:scale-[1.02] transition-transform">
-          <span>Mulai Gratis Sekarang</span>
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
+      <div class="flex flex-col sm:flex-row gap-4 font-mono text-xs font-bold">
+        <NuxtLink to="/register" class="btn-primary text-xs px-8 py-4 min-w-[180px] tracking-wider uppercase">
+          Mulai Antrean Gratis
         </NuxtLink>
-        <a href="#demo" class="btn-ghost text-sm px-8 py-3.5 hover:bg-white/5 transition-all">
-          Lihat Live Demo Sync
+        <a href="#demo" class="btn-secondary text-xs px-8 py-4 min-w-[180px] tracking-wider uppercase">
+          Lihat Live Demo
         </a>
       </div>
 
-      <div class="flex items-center justify-center gap-6 mt-8 text-xs text-gray-500">
-        <span class="flex items-center gap-1.5">⚡ Real-time via SSE</span>
-        <span>&middot;</span>
-        <span class="flex items-center gap-1.5">🎮 OBS Integrated</span>
-        <span>&middot;</span>
-        <span class="flex items-center gap-1.5">🔒 100% Privacy Safe</span>
+      <!-- Features bar preserved from current design -->
+      <div class="flex items-center justify-center gap-6 mt-12 text-[10px] text-retro font-mono uppercase tracking-widest font-bold">
+        <span class="flex items-center gap-1.5">
+          [+] Real-time via SSE
+        </span>
+        <span class="flex items-center gap-1.5">
+          [+] OBS Integrated
+        </span>
+        <span class="flex items-center gap-1.5">
+          [+] Zero Modals
+        </span>
       </div>
     </section>
 
-    <!-- Interactive Simulator Demo Section -->
-    <section id="demo" class="relative z-10 py-16 border-t border-white/5 bg-black/30 backdrop-blur-sm">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-3">
-            Sinkronisasi Real-Time Dua Sisi
-          </h2>
-          <p class="text-sm text-gray-400 max-w-lg mx-auto">
-            Lihat bagaimana tindakan Streamer di dashboard OBS (kiri) memperbarui status di halaman Publik Viewer (kanan) secara otomatis.
-          </p>
-
-          <!-- Simulator Action Log Log -->
-          <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2 mt-6">
+    <!-- Product Preview (CRT Screen Mockup in Light Theme) -->
+    <section id="demo" class="max-w-5xl mx-auto px-6 pb-24">
+      <div class="relative border-[1.5px] border-retro p-2 bg-white shadow-[6px_6px_0px_#111111] rounded-[10px]">
+        <!-- Window Header -->
+        <div class="flex items-center justify-between px-3 py-2 border-b-[1.5px] border-retro font-mono text-xs text-retro bg-surface-deeper mb-2 rounded-t-[8px] font-bold">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary border border-retro"></span>
+            <span class="w-3 h-3 rounded-full bg-secondary border border-retro"></span>
+            <span class="w-3 h-3 rounded-full bg-surface-deepest border border-retro"></span>
+            <span class="ml-2 font-black">OBS_DOCK://LOBBYQ_PREVIEW.exe</span>
+          </div>
+          <span class="text-primary font-black animate-pulse flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-primary animate-ping" />
-            <span class="text-xs text-gray-300 font-mono">{{ simLog }}</span>
-            <span
-              :class="[
-                'text-[10px] uppercase font-bold px-2 py-0.5 rounded transition-all duration-300',
-                syncIndicator ? 'bg-primary/20 text-primary scale-110' : 'bg-white/5 text-gray-500'
-              ]"
-            >
-              {{ syncIndicator ? '⚡ SSE SYNCED' : 'STANDBY' }}
-            </span>
-          </div>
+            <span>● FEED ACTIVE</span>
+          </span>
         </div>
 
-        <!-- Simulator Container Grid -->
-        <div class="grid lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
-          <!-- 1. LEFT SIDE: STREAMER OBS DOCK (320px simulator layout) -->
-          <div class="lg:col-span-6 flex flex-col items-center">
-            <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-widest">Tampilan Streamer (OBS Dock)</div>
-            
-            <div class="w-full max-w-[340px] bg-black border border-white/10 rounded-lg p-3 shadow-2xl relative select-none">
-              <!-- OBS Header -->
-              <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-5 h-5 rounded bg-primary flex items-center justify-center">
-                    <span class="text-white font-bold text-[9px]">LQ</span>
-                  </div>
-                  <span class="text-xs font-bold text-white">OBS Dock &middot; LobbyQ</span>
-                </div>
-                <span class="text-[9px] text-green-400 bg-green-950/40 px-1.5 py-0.5 rounded font-mono border border-green-800/30">ONLINE</span>
+        <!-- Simulated Dashboard Screen (Light CRT Screen) -->
+        <div class="crt-screen scanlines bg-white rounded-b-[8px] p-6 min-h-[400px] flex flex-col md:flex-row gap-6 relative">
+          <!-- Left side: Form & Stats -->
+          <div class="w-full md:w-1/3 flex flex-col gap-4">
+            <div class="border-[1.5px] border-retro bg-surface-deeper p-4 flex flex-col gap-3 rounded-[10px]">
+              <span class="font-mono text-xs text-secondary uppercase font-bold tracking-wider">// Quick Add</span>
+              <div class="flex gap-2">
+                <input type="text" placeholder="Nama Viewer..." readonly :value="simStep === 3 ? 'Fajar' : 'Joko_Gaming'" class="bg-white border-[1.5px] border-retro px-3 py-2 text-xs font-sans rounded-[8px] w-full focus:outline-none text-retro font-bold">
+                <button class="bg-primary text-white text-xs font-mono px-3 py-2 rounded-[8px] border-[1.5px] border-retro font-bold">ADD</button>
               </div>
+            </div>
 
-              <!-- Top Add Input (Simulated UI) -->
-              <div class="bg-surface-dark/40 border border-white/5 rounded p-2 mb-3 space-y-1.5">
-                <div class="text-[9px] font-semibold text-gray-500">Tambah Antrean</div>
-                <div class="grid grid-cols-2 gap-1">
-                  <div class="bg-white/5 border border-white/10 rounded px-2 py-1 text-[10px] text-gray-400">
-                    {{ simStep === 3 ? 'Fajar' : 'Ketik nama...' }}
-                  </div>
-                  <div class="bg-white/5 border border-white/10 rounded px-2 py-1 text-[10px] text-gray-500">
-                    {{ simStep === 3 ? '55667***' : 'Game ID...' }}
-                  </div>
-                </div>
-                <div class="flex justify-between items-center pt-0.5">
-                  <span class="text-[9px] text-gray-500">Kuota: 1</span>
-                  <div class="flex items-center gap-1.5">
-                    <span class="text-[9px] text-amber-300">⭐ Fast Track</span>
-                    <button class="bg-primary text-white text-[9px] px-2.5 py-0.5 rounded font-semibold transition-all" :class="{ 'scale-105 bg-primary-light': simStep === 3 }">
-                      Tambah
-                    </button>
-                  </div>
-                </div>
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-2">
+              <div class="border-[1.5px] border-retro rounded-[10px] bg-white p-3 text-center">
+                <div class="font-mono text-[9px] text-retro font-bold uppercase">PLAYING</div>
+                <div class="font-display text-xl font-extrabold text-primary mt-1">{{ simPlaying.length }}</div>
               </div>
+              <div class="border-[1.5px] border-retro rounded-[10px] bg-white p-3 text-center">
+                <div class="font-mono text-[9px] text-retro font-bold uppercase">WAITING</div>
+                <div class="font-display text-xl font-extrabold text-secondary mt-1">{{ simWaiting.length }}</div>
+              </div>
+              <div class="border-[1.5px] border-retro rounded-[10px] bg-white p-3 text-center">
+                <div class="font-mono text-[9px] text-retro font-bold uppercase">PARKED</div>
+                <div class="font-display text-xl font-extrabold text-retro/60 mt-1">{{ simParked.length }}</div>
+              </div>
+            </div>
 
-              <!-- Stats grid -->
-              <div class="grid grid-cols-3 gap-1 mb-3">
-                <div class="bg-surface-dark/20 border border-white/5 rounded py-1 text-center">
-                  <div class="text-xs font-bold text-primary">{{ simPlaying.length }}</div>
-                  <div class="text-[8px] text-gray-500 uppercase">Playing</div>
-                </div>
-                <div class="bg-surface-dark/20 border border-white/5 rounded py-1 text-center">
-                  <div class="text-xs font-bold text-white">{{ simWaiting.length }}</div>
-                  <div class="text-[8px] text-gray-500 uppercase">Waiting</div>
-                </div>
-                <div class="bg-surface-dark/20 border border-white/5 rounded py-1 text-center">
-                  <div class="text-xs font-bold text-gray-400">{{ simParked.length }}</div>
-                  <div class="text-[8px] text-gray-500 uppercase">Parked</div>
-                </div>
+            <!-- Venn circles mockup -->
+            <div class="border-[1.5px] border-retro rounded-[10px] bg-surface-deeper p-4 font-sans text-xs text-retro flex items-center justify-between">
+              <div>
+                <span class="font-mono text-[10px] text-primary font-bold tracking-wide">// COMFORT SCALE</span>
+                <p class="text-[10px] mt-0.5 font-mono uppercase font-bold tracking-wider">Lobby stress: STABLE</p>
               </div>
-
-              <!-- Collapsibles Simulated -->
-              <div class="space-y-2 text-[10px]">
-                <!-- PLAYING LIST -->
-                <div class="border border-white/5 rounded overflow-hidden">
-                  <div class="px-2 py-1 bg-white/[0.02] flex items-center justify-between text-primary font-bold">
-                    <span>PLAYING ({{ simPlaying.length }})</span>
-                    <span class="text-[8px] text-gray-500 hover:text-white cursor-pointer font-normal">Selesai (Bulk)</span>
-                  </div>
-                  <div class="p-2 space-y-1.5">
-                    <div v-for="(item, idx) in simPlaying" :key="item.id" class="flex items-center justify-between bg-white/[0.02] border border-white/5 rounded p-1.5">
-                      <div>
-                        <div class="font-bold flex items-center gap-1">
-                          <span class="text-primary">#{{ idx + 1 }}</span>
-                          <span>{{ item.name }}</span>
-                          <span v-if="item.fast" class="text-[8px] bg-amber-500/20 text-amber-300 px-1 rounded">⭐ Fast</span>
-                        </div>
-                        <div class="text-[8px] text-gray-500">{{ item.gameId }} &middot; Sisa {{ item.quota }} Match</div>
-                      </div>
-                      <div class="flex items-center gap-1 scale-90 origin-right">
-                        <button class="bg-primary text-white px-2 py-0.5 rounded font-medium" :class="{ 'bg-primary-light scale-105': simStep === 1 && item.id === '1' }">Selesai</button>
-                        <button class="bg-white/5 border border-white/10 text-gray-400 px-1.5 py-0.5 rounded">Park</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- WAITING LIST -->
-                <div class="border border-white/5 rounded overflow-hidden">
-                  <div class="px-2 py-1 bg-white/[0.02] flex items-center justify-between text-white font-bold">
-                    <span>WAITING ({{ simWaiting.length }})</span>
-                  </div>
-                  <div class="p-2 space-y-1.5">
-                    <div v-for="(item, idx) in simWaiting" :key="item.id" class="flex items-center justify-between bg-white/[0.02] border border-white/5 rounded p-1.5" :class="{ 'border-primary/30 bg-primary/5': simStep === 3 && item.id === '7' }">
-                      <div>
-                        <div class="font-bold flex items-center gap-1">
-                          <span class="text-gray-400">#{{ idx + 1 }}</span>
-                          <span>{{ item.name }}</span>
-                          <span v-if="item.fast" class="text-[8px] bg-amber-500/20 text-amber-300 px-1 rounded">⭐ Fast</span>
-                        </div>
-                        <div class="text-[8px] text-gray-500">{{ item.gameId }} &middot; Sisa {{ item.quota }} Match</div>
-                      </div>
-                      <div class="flex items-center gap-1 scale-90 origin-right">
-                        <button class="bg-secondary hover:bg-secondary-light text-white px-2 py-0.5 rounded font-medium" :class="{ 'bg-primary scale-105': simStep === 2 && item.id === '3' }">Play</button>
-                        <button class="text-gray-500 hover:text-red-400 p-0.5">✕</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Active pointer simulator overlay -->
-              <div v-if="simStep === 1" class="absolute top-[165px] right-[52px] pointer-events-none transition-all duration-500 animate-bounce">
-                <span class="text-lg">👆</span>
-              </div>
-              <div v-else-if="simStep === 2" class="absolute top-[265px] right-[52px] pointer-events-none transition-all duration-500 animate-bounce">
-                <span class="text-lg">👆</span>
-              </div>
-              <div v-else-if="simStep === 3" class="absolute top-[90px] right-[18px] pointer-events-none transition-all duration-500 animate-bounce">
-                <span class="text-lg">👆</span>
+              
+              <!-- Venn overlapping circles dynamic -->
+              <div class="relative w-10 h-10 flex-shrink-0">
+                <div class="absolute top-0 left-0 w-7 h-7 rounded-full bg-primary mix-blend-multiply opacity-80 animate-pulse"></div>
+                <div class="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-secondary mix-blend-multiply opacity-80"></div>
               </div>
             </div>
           </div>
 
-          <!-- 2. RIGHT SIDE: PUBLIC VIEWER PAGE (Smartphone format) -->
-          <div class="lg:col-span-6 flex flex-col items-center">
-            <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-widest">Tampilan Publik Viewer (Link URL)</div>
-            
-            <div class="w-full max-w-[340px] bg-surface-deeper border border-white/10 rounded-2xl p-3 shadow-2xl relative select-none">
-              <!-- Phone notch/bezel decoration -->
-              <div class="w-28 h-4 bg-black border-b border-white/10 rounded-b-xl mx-auto -mt-3 mb-2 flex items-center justify-center">
-                <div class="w-10 h-1 bg-white/20 rounded-full" />
-              </div>
+          <!-- Right side: Queue Cards Preview -->
+          <div class="flex-grow flex flex-col gap-4">
+            <div class="border-b-[1.5px] border-retro pb-2 flex items-center justify-between">
+              <span class="font-mono text-xs text-retro uppercase font-bold tracking-wider">Antrean Saat Ini (Active Queue)</span>
+              <span class="font-mono text-[10px] text-retro bg-surface-deeper px-2 py-0.5 border border-retro rounded">{{ simPlaying.length + simWaiting.length }} Viewer terdaftar</span>
+            </div>
 
-              <!-- Streamer Sticky Header inside mockup -->
-              <div class="bg-surface-dark/80 backdrop-blur border border-white/5 rounded-lg p-2 mb-3 flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-                  <span class="text-white font-bold text-xs">J</span>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-[11px] font-bold text-white truncate">John Streamer</div>
-                  <div class="text-[9px] text-gray-400">@johnstream</div>
-                </div>
-                <div class="flex items-center gap-1 text-[8px] bg-red-500/20 text-red-400 border border-red-500/30 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">
-                  <span class="w-1 h-1 rounded-full bg-red-500 animate-pulse" />
-                  Live
-                </div>
-              </div>
-
-              <!-- Section Playing (Viewer side) -->
-              <div class="space-y-1.5 mb-3 text-[10px]">
-                <div class="text-[9px] font-semibold text-primary uppercase tracking-wider flex items-center gap-1 px-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  Sedang Bermain
-                </div>
-                <div class="space-y-1.5">
-                  <div v-for="(item, idx) in simPlaying" :key="item.id" class="relative overflow-hidden bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 rounded p-2.5">
-                    <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
-                    <div class="flex items-center justify-between">
-                      <div>
-                        <div class="font-bold text-white flex items-center gap-1">
-                          <span>{{ item.name }}</span>
-                          <span v-if="item.fast" class="text-[7px] bg-amber-500/20 text-amber-300 px-1 rounded">Fast</span>
-                        </div>
-                        <div class="text-[8px] text-gray-400 mt-0.5">{{ item.gameId }} &middot; Sisa {{ item.quota }} Match</div>
-                      </div>
-                      <span class="text-[8px] bg-primary/20 text-primary border border-primary/30 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Playing</span>
-                    </div>
+            <!-- Cards -->
+            <div class="flex flex-col gap-2.5 overflow-y-auto max-h-[300px] pr-1">
+              <!-- Render playing items -->
+              <div v-for="(item, idx) in simPlaying" :key="'play-' + item.id" class="border-[1.5px] border-secondary bg-secondary/[0.03] p-3 flex items-center justify-between rounded-[10px]">
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-lg font-bold text-secondary">#0{{ idx + 1 }}</span>
+                  <div>
+                    <h4 class="font-display font-bold text-sm text-retro flex items-center gap-1.5 uppercase">
+                      {{ item.name }} 
+                      <span v-if="item.fast" class="font-mono text-[8px] font-bold text-primary bg-primary/10 border border-primary/20 px-1 py-0.5 rounded">⭐ FAST TRACK</span>
+                    </h4>
+                    <p class="font-mono text-[10px] text-retro/70">ID: {{ item.gameId }} | Sisa {{ item.quota }} Match</p>
                   </div>
                 </div>
+                <span class="font-mono text-[10px] font-bold text-secondary bg-secondary/10 border border-secondary px-2 py-1 rounded-[6px] uppercase">PLAYING</span>
               </div>
 
-              <!-- Section Waiting (Viewer side) -->
-              <div class="space-y-1.5 text-[10px]">
-                <div class="text-[9px] font-semibold text-gray-500 uppercase tracking-wider px-1">Daftar Antrean ({{ simWaiting.length }})</div>
-                <div class="space-y-1.5">
-                  <div v-for="(item, idx) in simWaiting" :key="item.id" class="flex items-center justify-between bg-surface-dark border border-white/5 rounded p-2">
-                    <div class="flex items-center gap-2">
-                      <span class="text-xs font-mono text-gray-500">#{{ idx + 1 }}</span>
-                      <div>
-                        <div class="font-semibold text-white flex items-center gap-1">
-                          <span>{{ item.name }}</span>
-                          <!-- Highlights specific viewer example -->
-                          <span v-if="item.id === '4'" class="text-[8px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-1 rounded">Posisi Kamu</span>
-                          <span v-if="item.fast" class="text-[7px] bg-amber-500/20 text-amber-300 px-1 rounded">Fast</span>
-                        </div>
-                        <div class="text-[8px] text-gray-500 mt-0.5">{{ item.gameId }} &middot; Sisa {{ item.quota }} Match</div>
-                      </div>
-                    </div>
-                    <span class="text-[7px] bg-white/5 border border-white/10 text-gray-400 px-1.5 py-0.5 rounded font-medium">Waiting</span>
+              <!-- Render waiting items -->
+              <div v-for="(item, idx) in simWaiting" :key="'wait-' + item.id" class="border-[1.5px] border-retro bg-white p-3 flex items-center justify-between rounded-[10px]" :class="{ 'border-primary bg-primary/[0.02]': simStep === 3 && item.id === '7' }">
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-lg font-bold text-retro">#0{{ simPlaying.length + idx + 1 }}</span>
+                  <div>
+                    <h4 class="font-display font-bold text-sm text-retro flex items-center gap-1.5 uppercase">
+                      {{ item.name }}
+                      <span v-if="item.fast" class="font-mono text-[8px] font-bold text-primary bg-primary/10 border border-primary/20 px-1 py-0.5 rounded">⭐ FAST TRACK</span>
+                    </h4>
+                    <p class="font-mono text-[10px] text-retro/70">ID: {{ item.gameId }} | Sisa {{ item.quota }} Match</p>
                   </div>
                 </div>
+                <span class="font-mono text-[10px] font-bold text-retro/60 border border-retro px-2 py-1 rounded-[6px] uppercase bg-surface-dark">WAITING</span>
               </div>
+            </div>
+          </div>
+          
+          <!-- Sync / Action Log Toast inside CRT preview -->
+          <div class="absolute bottom-4 left-6 right-6 z-20 bg-white border-[1.5px] border-primary text-primary text-[9px] font-mono font-bold text-center py-2.5 rounded-[8px] flex items-center justify-center gap-1.5 shadow-soft uppercase tracking-widest">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span>{{ simLog }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <!-- SSE status overlay animation for visual synced proof -->
-              <div v-if="syncIndicator" class="absolute inset-x-2 top-2 z-30 bg-primary/95 text-white text-[10px] font-bold text-center py-1 rounded shadow-lg animate-bounce flex items-center justify-center gap-1">
-                <span>⚡ Sinkronisasi Instan via SSE</span>
+    <!-- Cara Kerja Section (Preserved content with adapted design) -->
+    <section class="border-t-[1.5px] border-retro bg-[#fcfcfc] py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="font-display text-2xl md:text-3xl font-black text-retro tracking-wider uppercase">Cara Kerja LobbyQ</h2>
+          <p class="font-sans text-retro/70 text-xs mt-2 uppercase font-mono font-bold">Tidak perlu notepad, tidak perlu integrasi bot yang rumit. Mulai dalam 3 langkah instan.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div v-for="(step, i) in steps" :key="i" class="border-[1.5px] border-retro p-8 bg-white shadow-[3px_3px_0px_#111111] rounded-[10px] flex flex-col justify-between min-h-[240px] transition-all duration-300 hover:-translate-y-1">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="font-mono text-lg font-bold text-primary">0{{ i + 1 }} / {{ step.meta || 'STEP' }}</div>
+                <div class="w-9 h-9 rounded-[6px] bg-surface-dark border border-retro flex items-center justify-center shrink-0">
+                  <component :is="step.icon" class="w-4.5 h-4.5 text-primary" />
+                </div>
               </div>
+              <h3 class="font-display text-sm font-black text-retro mb-2 uppercase tracking-wider">{{ step.title }}</h3>
+              <p class="font-mono text-[10px] text-retro/75 leading-relaxed uppercase tracking-wider font-semibold">{{ step.desc }}</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- How it works (Cara Kerja) Section -->
-    <section class="relative z-10 py-20 border-t border-white/5">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-4">
-            Cara Kerja Tiga Langkah
+    <!-- CTA Section -->
+    <section class="max-w-7xl mx-auto px-6 py-24 text-center">
+      <div class="border-[1.5px] border-primary bg-primary/[0.03] p-12 shadow-[6px_6px_0px_#111111] relative overflow-hidden rounded-[10px]">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-primary opacity-5 rounded-full blur-3xl"></div>
+        <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+          <h2 class="font-display text-2xl md:text-4xl font-black text-retro tracking-wider uppercase mb-4">
+            SIAP UNTUK MABAR LEBIH RAPI?
           </h2>
-          <p class="text-sm text-gray-400 max-w-md mx-auto">
-            Hanya butuh beberapa detik untuk menyiapkan lobi antrean mabar kamu.
+          <p class="font-mono text-[10px] text-retro/70 max-w-md mb-8 uppercase tracking-wider font-bold">
+            Dapatkan pengalaman mengelola antrean yang mulus, rapi, dan terlihat keren di stream Anda sekarang juga.
           </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Step 1 -->
-          <div class="card p-6 text-center group hover:border-primary/20 transition-all hover:-translate-y-1 duration-300">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
-              <svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <div class="text-xs text-primary font-bold uppercase tracking-wider mb-2">Langkah 1</div>
-            <h3 class="text-lg font-bold text-white mb-2">Daftar Akun Streamer</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">
-              Buat akun dalam hitungan detik gratis atau masuk dengan cepat menggunakan akun Google.
-            </p>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="card p-6 text-center group hover:border-primary/20 transition-all hover:-translate-y-1 duration-300">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
-              <svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-              </svg>
-            </div>
-            <div class="text-xs text-primary font-bold uppercase tracking-wider mb-2">Langkah 2</div>
-            <h3 class="text-lg font-bold text-white mb-2">Kelola Antrean di OBS</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">
-              Sematkan link dashboard di OBS Custom Dock. Tambah, edit, dan jalankan antrean secara inline tanpa modal.
-            </p>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="card p-6 text-center group hover:border-primary/20 transition-all hover:-translate-y-1 duration-300">
-            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors">
-              <svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-              </svg>
-            </div>
-            <div class="text-xs text-primary font-bold uppercase tracking-wider mb-2">Langkah 3</div>
-            <h3 class="text-lg font-bold text-white mb-2">Bagikan Link Publik</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">
-              Tampilkan link publik `/q/username` pada chat bot streaming atau overlay agar penonton memantau posisi mereka.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Marketing Highlights -->
-    <section class="relative z-10 py-16 border-t border-white/5 bg-black/[0.15]">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="feature in features" :key="feature.title" class="p-6 rounded-lg bg-surface-dark border border-white/5 shadow-soft hover:border-white/10 transition-colors">
-            <div class="text-3xl mb-4 select-none">{{ feature.icon }}</div>
-            <h3 class="text-sm font-bold text-white mb-2">{{ feature.title }}</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">{{ feature.desc }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final Call to Action -->
-    <section class="relative z-10 py-20">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <div class="card p-10 relative overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 pointer-events-none" />
-          <div class="relative z-10">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-4">
-              Siap Meninggalkan Cara Manual?
-            </h2>
-            <p class="text-sm text-gray-400 mb-8 max-w-md mx-auto leading-relaxed">
-              Beralih ke manajemen antrean mabar modern dan tingkatkan keterlibatan penonton saat streaming game Anda.
-            </p>
-            <NuxtLink to="/register" class="btn-primary text-sm px-10 py-4 inline-flex items-center gap-2 hover:scale-[1.02] transition-transform">
-              <span>Daftar Sekarang &mdash; Gratis</span>
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+          <div class="flex flex-col sm:flex-row gap-4 font-mono text-xs font-bold">
+            <NuxtLink to="/register" class="btn-primary text-xs px-8 py-3.5 min-w-[180px] tracking-wider uppercase">
+              COBA SEKARANG (GRATIS)
+            </NuxtLink>
+            <NuxtLink to="/login" class="btn-secondary text-xs px-8 py-3.5 min-w-[180px] tracking-wider uppercase">
+              MASUK KE DASHBOARD
             </NuxtLink>
           </div>
         </div>
@@ -370,6 +200,8 @@
 </template>
 
 <script setup lang="ts">
+import { h, ref, reactive, onMounted, onBeforeUnmount } from 'vue'
+
 definePageMeta({
   layout: 'default',
 })
@@ -378,7 +210,38 @@ useHead({
   title: 'LobbyQ - Manajemen Antrean Mabar untuk Streamer Game',
 })
 
-// Simulator states
+// Custom SVG Icons
+const UserIcon = {
+  render() {
+    return h('svg', { class: 'w-5 h-5 text-primary', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+      h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' })
+    ])
+  }
+}
+
+const ClipboardIcon = {
+  render() {
+    return h('svg', { class: 'w-5 h-5 text-primary', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+      h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' })
+    ])
+  }
+}
+
+const ShareIcon = {
+  render() {
+    return h('svg', { class: 'w-5 h-5 text-primary', fill: 'none', viewBox: '0 0 24 24', stroke: 'currentColor' }, [
+      h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z' })
+    ])
+  }
+}
+
+const steps = [
+  { icon: UserIcon, title: 'Daftar Akun Streamer', desc: 'Buat akun dalam hitungan detik gratis atau masuk dengan cepat menggunakan akun Google.', meta: 'SETUP' },
+  { icon: ClipboardIcon, title: 'Kelola Antrean di OBS', desc: 'Sematkan link dashboard di OBS Custom Dock. Tambah, edit, dan jalankan antrean secara inline tanpa modal.', meta: 'OBS DOCK' },
+  { icon: ShareIcon, title: 'Bagikan Link Publik', desc: 'Tampilkan link publik /q/username pada chat bot streaming atau overlay agar penonton memantau posisi mereka.', meta: 'SHARE' },
+]
+
+// Simulator state
 const simPlaying = ref([
   { id: '1', name: 'Budi', gameId: '12345***', quota: 2, fast: true },
   { id: '2', name: 'Andi', gameId: '67890***', quota: 1, fast: false },
@@ -400,9 +263,7 @@ const syncIndicator = ref(false)
 
 const triggerSync = () => {
   syncIndicator.value = true
-  setTimeout(() => {
-    syncIndicator.value = false
-  }, 1000)
+  setTimeout(() => { syncIndicator.value = false }, 1000)
 }
 
 const runStep = () => {
@@ -410,7 +271,6 @@ const runStep = () => {
   triggerSync()
 
   if (simStep.value === 0) {
-    // Step 0: Reset to initial
     simPlaying.value = [
       { id: '1', name: 'Budi', gameId: '12345***', quota: 2, fast: true },
       { id: '2', name: 'Andi', gameId: '67890***', quota: 1, fast: false },
@@ -422,65 +282,29 @@ const runStep = () => {
     ]
     simLog.value = 'Simulator direset ke status awal.'
   } else if (simStep.value === 1) {
-    // Step 1: Complete match on Budi
     simPlaying.value = [
       { id: '1', name: 'Budi', gameId: '12345***', quota: 1, fast: true },
       { id: '2', name: 'Andi', gameId: '67890***', quota: 1, fast: false },
     ]
     simLog.value = 'Streamer menyelesaikan match Budi (Sisa kuota: 1).'
   } else if (simStep.value === 2) {
-    // Step 2: Play Rina
     simWaiting.value = simWaiting.value.filter(item => item.id !== '3')
     simPlaying.value.push({ id: '3', name: 'Rina', gameId: '11223***', quota: 2, fast: false })
     simLog.value = 'Streamer memindahkan Rina ke dalam status PLAYING.'
   } else if (simStep.value === 3) {
-    // Step 3: Add Fajar
     simWaiting.value.push({ id: '7', name: 'Fajar', gameId: '55667***', quota: 3, fast: false })
     simLog.value = 'Streamer menambahkan "Fajar" ke dalam WAITING list.'
   }
 }
 
 let simInterval: any = null
-onMounted(() => {
-  simInterval = setInterval(runStep, 4000)
-})
-onBeforeUnmount(() => {
-  if (simInterval) clearInterval(simInterval)
-})
+onMounted(() => { simInterval = setInterval(runStep, 4000) })
+onBeforeUnmount(() => { if (simInterval) clearInterval(simInterval) })
 
 const features = [
-  {
-    icon: '⚡',
-    title: 'Sinkronisasi Real-Time',
-    desc: 'Semua perubahan antrean di-broadcast instan menggunakan Server-Sent Events (SSE). Tanpa reload halaman.',
-  },
-  {
-    icon: '🎮',
-    title: 'OBS Custom Dock Ready',
-    desc: 'Antarmuka super tipis berukuran 300px-400px yang muat sempurna langsung di panel OBS Dock Anda.',
-  },
-  {
-    icon: '🔒',
-    title: 'Keamanan Privasi Game ID',
-    desc: 'Melindungi ID Game penonton Anda dari penyalahgunaan menggunakan masking otomatis di frontend publik.',
-  },
-  {
-    icon: '🚫',
-    title: 'Zero Modal Policy',
-    desc: 'Tidak ada popup atau modal dialog yang mengganggu fokus permainan Anda. Semua pengeditan dilakukan secara inline.',
-  },
+  { icon: '🎮', title: 'Sinkronisasi Real-Time', desc: 'Semua perubahan antrean di-broadcast instan menggunakan Server-Sent Events (SSE). Tanpa reload.' },
+  { icon: '📺', title: 'OBS Custom Dock Ready', desc: 'Antarmuka super tipis berukuran 300px-400px yang muat sempurna langsung di panel OBS Dock Anda.' },
+  { icon: '🔒', title: 'Keamanan Privasi Game ID', desc: 'Melindungi ID Game penonton Anda dari penyalahgunaan menggunakan masking otomatis di frontend publik.' },
+  { icon: '🚫', title: 'Zero Modal Policy', desc: 'Tidak ada popup atau modal dialog yang mengganggu fokus permainan Anda. Semua pengeditan dilakukan secara inline.' },
 ]
 </script>
-
-<style scoped>
-.text-gradient {
-  background-size: 200% auto;
-  animation: shine 4s linear infinite;
-}
-
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-</style>

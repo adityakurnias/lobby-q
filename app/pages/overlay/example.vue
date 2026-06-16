@@ -14,13 +14,13 @@ const OverlayKey = route.query.key;
 
 <style scoped>
 .alert-box {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: rgba(15, 25, 28, 0.92);
+  color: #E8EDF0;
   padding: 20px 40px;
-  border-radius: 15px;
-  border: 2px solid #00dc82;
+  border-radius: 16px;
+  border: 2px solid #13A8C7;
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   animation: popIn 0.5s ease-out;
 }
 

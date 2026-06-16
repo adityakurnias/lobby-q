@@ -24,8 +24,23 @@ logs
 !.env.example
 
 # Specification and Plan Files
-.qoder/
 api-spec.md
 arch.md
 prd-lobbyq.md
 swagger.yaml
+
+# AI and Agent Tools / Outputs
+.agents/
+.design/
+.factory/
+.kilocode/
+.qwen/
+.qoder/
+.gemini/
+CLAUDE.md
+skills-lock.json
+testsprite_tests/
+graphify-out/
+design2.md
+index.html
+DESIGN.MD
