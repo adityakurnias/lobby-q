@@ -22,3 +22,10 @@ logs
 .env
 .env.*
 !.env.example
+
+# Specification and Plan Files
+.qoder/
+api-spec.md
+arch.md
+prd-lobbyq.md
+swagger.yaml
